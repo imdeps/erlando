@@ -309,7 +309,8 @@ expr({op, Line, Op, L0, R0}, MonadStack) ->
 expr({remote, Line, M0, F0}, MonadStack) ->
     M1 = expr(M0, MonadStack),
     F1 = expr(F0, MonadStack),
-    {remote, Line, M1, F1}.
+    {remote, Line, M1, F1};
+expr(A, _) -> A.
 
 %% -type expr_list([Expression]) -> [Expression].
 %%  These expressions are processed "in parallel" for purposes of variable
